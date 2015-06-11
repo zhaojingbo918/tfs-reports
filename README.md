@@ -1,5 +1,5 @@
-# tfs-reports
+# TFS Reports
 
-Displays the TFS project picker dialog box. Once a project is selected, it writes the changeset history to a file.
-
-Initial version was taken from [this thread on StackOverflow] (http://stackoverflow.com/questions/10282506/export-tfs-2010-history-to-excel-or-text-document)
+## Commit history
+Displays TFS project picker dialog box. Once a project is selected, it writes its full commit history to a comma delimited file.
+Initial version of this feature was based on [this Stackoverflow thread] (http://stackoverflow.com/questions/10282506/export-tfs-2010-history-to-excel-or-text-document)
