@@ -7,9 +7,9 @@
     {
         public static void Main()
         {
-            var tfsAdapter = new TfsProjectSelector();
+            var projectSelector = new TfsProjectSelector();
 
-            var versionControl = new VersionControl(tfsAdapter.SelectedProjectCollection, tfsAdapter.SelectedProject);
+            var versionControl = new VersionControl(projectSelector.SelectedProjectCollection, projectSelector.SelectedProject);
 
             Trace.WriteLine("Retrieving change set history in project {0}".With(versionControl.ProjectName));
 
