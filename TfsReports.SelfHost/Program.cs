@@ -9,7 +9,7 @@
         {
             var projectSelector = new TfsProjectSelector();
 
-            var versionControl = new VersionControl(projectSelector.SelectedProjectCollection, projectSelector.SelectedProject);
+            var versionControl = new VersionControl(projectSelector);
 
             Trace.WriteLine("Retrieving change set history in project {0}".With(versionControl.ProjectName));
 

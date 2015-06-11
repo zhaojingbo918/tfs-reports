@@ -3,8 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using Microsoft.TeamFoundation.Client;
-    using Microsoft.TeamFoundation.Server;
     using Microsoft.TeamFoundation.VersionControl.Client;
 
     public class VersionControl
@@ -13,11 +11,11 @@
         private readonly VersionControlServer versionControlService;
         private readonly IdentityMapper identityMapper;
 
-        public VersionControl(TfsTeamProjectCollection teamProjectCollection, ProjectInfo teamProjectInfo)
+        public VersionControl(TfsProjectSelector projectSelector)
         {
-            versionControlService = teamProjectCollection.GetService<VersionControlServer>();
-            teamProject = versionControlService.GetTeamProject(teamProjectInfo.Name);
-            identityMapper = new IdentityMapper(teamProjectCollection);
+            versionControlService = projectSelector.SelectedProjectCollection.GetService<VersionControlServer>();
+            teamProject = versionControlService.GetTeamProject(projectSelector.SelectedProject.Name);
+            identityMapper = new IdentityMapper(projectSelector.SelectedProjectCollection);
         }
 
         public string ProjectName
