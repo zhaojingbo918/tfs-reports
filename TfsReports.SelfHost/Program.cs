@@ -13,11 +13,15 @@
 
             var fileName = "Commit history for {0}.csv".With(versionControl.ProjectName);
 
-            using (var streamWriter = File.CreateText(fileName))
+
+            using (var fileStream = File.Create(fileName))
             {
-                streamWriter.WriteLine("Commit Id,Creation Date,User,Comment");
-                versionControl.GetAllChangesets().ForEach(streamWriter.WriteLine);
-            }
+                using (StreamWriter streamWriter = new StreamWriter(fileStream, System.Text.Encoding.GetEncoding("GB2312")))
+                {
+                    streamWriter.WriteLine("Commit Id,Creation Date,User,Comment");
+                    versionControl.GetAllChangesets().ForEach(streamWriter.WriteLine);
+                }
+            } 
 
             Trace.WriteLine("History written to file '{0}'".With(fileName));
         }
